@@ -14,7 +14,6 @@ Group(ru):	X11/âÉÂÌÉÏÔÅËÉ
 Group(uk):	X11/â¦ÂÌ¦ÏÔÅËÉ
 Source0:	ftp://ftp.gnome.org/pub/GNOME/unstable/sources/%{name}/%{name}-%{version}.tar.gz
 Patch0:		%{name}-am15.patch
-Patch1:		%{name}-perl.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf-devel >= 0.11
 BuildRequires:	audiofile-devel
@@ -82,12 +81,12 @@ Statyczne biblioteki narzêdzia konfiguracyjnego Bonobo.
 %prep
 %setup  -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 rm -f missing
 gettextize --copy --force
 libtoolize --copy --force
+xml-i18n-toolize --force
 aclocal -I macros
 autoconf
 automake -a -c
