@@ -1,7 +1,7 @@
 Summary:	Bonobo configuration moniker
 Summary(pl):	Narzêdzie konfiguracyjne Bonobo
 Name:		bonobo-conf
-Version:	0.11
+Version:	0.12
 Release:	1
 License:	GPL
 Group:		X11/Libraries
