@@ -5,7 +5,7 @@ Version:	0.16
 Release:	2
 License:	GPL
 Group:		X11/Libraries
-Source0:	http://ftp.gnome.org/mirror/gnome.org/sources/%{name}/%{version}/%{name}-%{version}.tar.gz
+Source0:	http://ftp.gnome.org/pub/gnome/sources/bonobo-conf/%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	03467d42b8a74d379cfef238017eb862
 Patch0:		%{name}-am15.patch
 Patch1:		%{name}-locale_names.patch
@@ -35,7 +35,7 @@ Narzêdzie konfiguracyjne Bonobo.
 Summary:	Include files for the configuration moniker
 Summary(pl):	Pliki nag³ówkowe dla bibliotek narzêdzia konfiguracyjnego Bonobo
 Group:		X11/Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 Obsoletes:	libbonobo-conf0-devel
 
 %description devel
@@ -51,7 +51,7 @@ bibliotek narzêdzia konfiguracyjnego Bonobo.
 Summary:	Static libraries for the configuration moniker
 Summary(pl):	Statyczne biblioteki narzêdzia konfiguracyjnego Bonobo
 Group:		X11/Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static libraries for the configuration moniker.
@@ -67,7 +67,6 @@ Statyczne biblioteki narzêdzia konfiguracyjnego Bonobo.
 mv -f po/{no,nb}.po
 
 %build
-rm -f missing
 %{__gettextize}
 %{__libtoolize}
 xml-i18n-toolize --force
@@ -83,6 +82,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+rm -f $RPM_BUILD_ROOT%{_libdir}/bonobo/monikers/*.{a,la}
 
 %find_lang %{name}
 
@@ -104,7 +105,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/*.so
 %{_libdir}/*.la
-%{_libdir}/bonobo/monikers/*.la
 %attr(755,root,root) %{_libdir}/*.sh
 %{_includedir}/bonobo-conf
 %{_datadir}/idl/*.idl
@@ -112,4 +112,3 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/*.a
-%{_libdir}/bonobo/monikers/*.a
