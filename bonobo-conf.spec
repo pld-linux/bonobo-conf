@@ -10,6 +10,7 @@ Group(es):	X11/Bibliotecas
 Group(fr):	X11/Librairies
 Group(pl):	X11/Biblioteki
 Source0:	ftp://ftp.gnome.org/pub/GNOME/unstable/sources/%{name}/%{name}-%{version}.tar.gz
+Patch0:		%{name}-am15.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf-devel >= 0.11
 BuildRequires:	audiofile-devel
@@ -56,13 +57,16 @@ Requires:	%{name}-devel = %{version}
 Static libraries for the configuration moniker.
 
 %prep
-%setup -q
+%setup  -q
+%patch0 -p1
 
 %build
+rm -f missing
 gettextize --copy --force
 libtoolize --copy --force
 aclocal -I macros
 autoconf
+automake -a -c
 %configure
 
 %{__make}
