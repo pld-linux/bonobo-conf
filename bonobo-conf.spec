@@ -2,7 +2,7 @@ Summary:	Bonobo configuration moniker
 Summary(pl):	Narzêdzie konfiguracyjne Bonobo
 Name:		bonobo-conf
 Version:	0.14
-Release:	2
+Release:	4
 License:	GPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.gnome.org/pub/GNOME/unstable/sources/%{name}/%{name}-%{version}.tar.gz
@@ -20,6 +20,7 @@ BuildRequires:	oaf-devel >= 0.6.2
 BuildRequires:	glib-devel >= 1.2.0
 BuildRequires:	gtk+-devel >= 1.2.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Obsoletes:	libbonobo-conf0
 
 %define		_prefix		/usr/X11R6
 %define		_mandir		%{_prefix}/man
@@ -35,6 +36,7 @@ Summary:	Include files for the configuration moniker
 Summary(pl):	Pliki nag³ówkowe dla bibliotek narzêdzia konfiguracyjnego Bonobo
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
+Obsoletes:	libbonobo-conf0-devel
 
 %description devel
 This package provides the necessary development libraries and include
