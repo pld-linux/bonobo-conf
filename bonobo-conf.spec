@@ -2,12 +2,13 @@ Summary:	Bonobo configuration moniker
 Summary(pl):	Narzêdzie konfiguracyjne Bonobo
 Name:		bonobo-conf
 Version:	0.16
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/mirror/gnome.org/sources/%{name}/%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	03467d42b8a74d379cfef238017eb862
 Patch0:		%{name}-am15.patch
+Patch1:		%{name}-locale_names.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf-devel >= 0.11
 BuildRequires:	audiofile-devel
@@ -23,7 +24,6 @@ BuildRequires:	libtool
 BuildRequires:	oaf-devel >= 0.6.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libbonobo-conf0
-
 
 %description
 Bonobo configuration moniker.
@@ -62,6 +62,9 @@ Statyczne biblioteki narzêdzia konfiguracyjnego Bonobo.
 %prep
 %setup  -q
 %patch0 -p1
+%patch1 -p1
+
+mv -f po/{no,nb}.po
 
 %build
 rm -f missing
