@@ -5,7 +5,7 @@ Version:	0.16
 Release:	1
 License:	GPL
 Group:		X11/Libraries
-Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/%{version}/%{name}-%{version}.tar.gz
+Source0:	http://ftp.gnome.org/mirror/gnome.org/sources/%{name}/%{version}/%{name}-%{version}.tar.gz
 Patch0:		%{name}-am15.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf-devel >= 0.11
