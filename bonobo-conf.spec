@@ -1,11 +1,11 @@
 Summary:	Bonobo configuration moniker
 Summary(pl):	Narzêdzie konfiguracyjne Bonobo
 Name:		bonobo-conf
-Version:	0.14
-Release:	4
+Version:	0.16
+Release:	1
 License:	GPL
 Group:		X11/Libraries
-Source0:	ftp://ftp.gnome.org/pub/GNOME/unstable/sources/%{name}/%{name}-%{version}.tar.gz
+Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/%{version}/%{name}-%{version}.tar.gz
 Patch0:		%{name}-am15.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf-devel >= 0.11
