@@ -1,0 +1,22 @@
+--- bonobo-conf-0.16/configure.in~	Mon Jul 26 10:00:20 2004
++++ bonobo-conf-0.16/configure.in	Mon Jul 26 10:00:20 2004
+@@ -135,7 +135,7 @@
+ AC_CHECK_ALIGNOF(CORBA_pointer)
+ CPPFLAGS=$orig_CPPFLAGS 
+ 
+-ALL_LINGUAS="az da de el es fr hu it nn no pl pt pt_BR sk sv tr zh_TW"
++ALL_LINGUAS="az da de el es fr hu it nb nn pl pt pt_BR sk sv tr zh_TW"
+ 
+ AM_GNU_GETTEXT
+ 	
+--- bonobo-conf-0.16/configure~	Mon Jul 26 10:00:13 2004
++++ bonobo-conf-0.16/configure	Mon Jul 26 10:00:13 2004
+@@ -9182,7 +9182,7 @@
+ 
+ CPPFLAGS=$orig_CPPFLAGS
+ 
+-ALL_LINGUAS="az da de el es fr hu it nn no pl pt pt_BR sk sv tr zh_TW"
++ALL_LINGUAS="az da de el es fr hu it nb nn pl pt pt_BR sk sv tr zh_TW"
+ 
+ if test -n "$ac_tool_prefix"; then
+   # Extract the first word of "${ac_tool_prefix}ranlib", so it can be a program name with args.
