@@ -1,7 +1,7 @@
 Summary:	Bonobo configuration moniker
 Summary(pl):	Narzêdzie konfiguracyjne Bonobo
 Name:		bonobo-conf
-Version:	0.12
+Version:	0.13
 Release:	1
 License:	GPL
 Group:		X11/Libraries
@@ -14,6 +14,7 @@ Group(ru):	X11/âÉÂÌÉÏÔÅËÉ
 Group(uk):	X11/â¦ÂÌ¦ÏÔÅËÉ
 Source0:	ftp://ftp.gnome.org/pub/GNOME/unstable/sources/%{name}/%{name}-%{version}.tar.gz
 Patch0:		%{name}-am15.patch
+Patch1:		%{name}-perl.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf-devel >= 0.11
 BuildRequires:	audiofile-devel
@@ -24,6 +25,8 @@ BuildRequires:	bonobo-devel >= 1.0.0
 BuildRequires:	esound-devel
 BuildRequires:	gettext-devel
 BuildRequires:	oaf-devel >= 0.6.2
+BuildRequires:	glib-devel >= 1.2.0
+BuildRequires:	gtk+-devel >= 1.2.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -79,6 +82,7 @@ Statyczne biblioteki narzêdzia konfiguracyjnego Bonobo.
 %prep
 %setup  -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 rm -f missing
