@@ -1,7 +1,7 @@
 Summary:	Bonobo configuration moniker
 Summary(pl):	Narzedzie konfiguracyjne Bonobo
 Name:		bonobo-conf
-Version:	0.10
+Version:	0.11
 Release:	1
 License:	GPL
 Group:		X11/Libraries
@@ -9,9 +9,7 @@ Group(de):	X11/Libraries
 Group(es):	X11/Bibliotecas
 Group(fr):	X11/Librairies
 Group(pl):	X11/Biblioteki
-Source0:	ftp://ftp.gnome.org/pub/GNOME/unstable/sources/%{name}/%{name}-%{version}.tar.bz2
-Patch0:		%{name}-ac_fixes.patch
-Patch1:		%{name}-ac_workaround.patch
+Source0:	ftp://ftp.gnome.org/pub/GNOME/unstable/sources/%{name}/%{name}-%{version}.tar.gz
 URL:		http://www.gnome.org/
 BuildRequires:	GConf-devel >= 0.11
 BuildRequires:	audiofile-devel
@@ -59,16 +57,12 @@ Static libraries for the configuration moniker.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
-rm -f missing
 gettextize --copy --force
 libtoolize --copy --force
 aclocal -I macros
 autoconf
-automake -a -c
 %configure
 
 %{__make}
