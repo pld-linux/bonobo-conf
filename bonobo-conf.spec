@@ -1,18 +1,25 @@
-%define name		bonobo-conf
-%define ver		0.7
-%define rel		%{?CUSTOM_RELEASE} %{!?CUSTOM_RELEASE:%RELEASE}
 
-Name:		%name
 Summary:	Bonobo configuration moniker.
 Summary(pl):	Narzedzie konfiguracyjne Bonobo
-Version: 	%ver
-Release: 	1
-Copyright: 	GPL
-Group:		System Environment/Libraries
-Source: 	%{name}-%{ver}.tar.gz
-URL: 		http://www.gnome.org/
-BuildRoot:	%{_tmppath}/%{name}-%{ver}-root
-Requires:       bonobo >= 1.0.0
+Name:		bonobo-conf
+Version:	0.9
+Release:	1
+License:	GPL
+Group:		X11/Libraries
+Group(de):	X11/Libraries
+Group(es):	X11/Bibliotecas
+Group(fr):	X11/Librairies
+Group(pl):	X11/Biblioteki
+Source0:	ftp://ftp.gnome.org/pub/GNOME/unstable/sources/%{name}/%{name}-%{version}.tar.bz2
+URL:		http://www.gnome.org/
+BuildRequires:	bonobo-devel >= 1.0.0
+BuildRequires:	libwrap-devel
+BuildRequires:	audiofile-devel
+BuildRequires:	esound-devel
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		_prefix		/usr/X11R6
+%define		_mandir		%{_prefix}/man
 
 %description
 Bonobo configuration moniker.
@@ -22,27 +29,36 @@ Narzedzie konfiguracyjne Bonobo
 
 %package devel
 Summary:	Libraries and include files for the configuration moniker.
-Group:		Development/Libraries
-Requires:	%name = %{PACKAGE_VERSION}
+Group:		X11/Development/Libraries
+Group(de):	X11/Entwicklung/Libraries
+Group(pl):	X11/Programowanie/Biblioteki
+Requires:	%name = %{version}
 
 %description devel
 This package provides the necessary development libraries and include
-files to allow you to develop programs using the Bonobo configuration moniker.
+files to allow you to develop programs using the Bonobo configuration
+moniker.
 
 %description devel -l pl
 Biblioteki i pliki nag³ówkowe potrzebne do programowania.
 
 %prep
-%setup
+%setup -q
 
 %build
-%configure2_13 \
+%configure2_13
+
 make
 
 %install
-%makeinstall
+
+rm -rf $RPM_BUILD_ROOT
+%{__make} DESTDIR=$RPM_BUILD_ROOT install
+
+gzip -9nf AUTHORS ChangeLog NEWS README
 
 %clean
+rm -rf $RPM_BUILD_ROOT
 
 %post
 if ! grep %{_libdir} /etc/ld.so.conf > /dev/null ; then
@@ -54,23 +70,23 @@ fi
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-, root, root)
-%doc AUTHORS COPYING ChangeLog NEWS README
-%{_bindir}/*
-%{_libdir}/bonobo/monikers
-%{_libdir}/*.sh
-%{_libdir}/lib*.so.*
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_libdir}/bonobo/monikers/*.so.*
+%attr(755,root,root) %{_libdir}/*.so.*
 %{_datadir}/idl/*.idl
-%{_datadir}/locale/*/LC_MESSAGES/*.mo
+# there is no .mo file ... ??
+#%{_datadir}/locale/*/LC_MESSAGES/*.mo
 %{_datadir}/oaf/*.oaf
+%doc *.gz
 
 %files devel
-%defattr(-, root, root)
-%{_includedir}/bonobo-conf
-%{_libdir}/lib*.so
-%{_libdir}/lib*.a
-%{_libdir}/lib*.la
-
-%changelog
-* %{date} PLD Team <pld-list@pld.org.pl>
-All persons listed below can be reached at <cvs_login>@pld.org.pl
+%defattr(644,root,root,755)
+%dir %{_includedir}/bonobo-conf/*.h
+%{_libdir}/bonobo/monikers/*.so
+%{_libdir}/bonobo/monikers/*.la
+%{_libdir}/bonobo/monikers/*.a
+%{_libdir}/*.sh
+%{_libdir}/*.so
+%{_libdir}/*.a
+%{_libdir}/*.la
