@@ -1,0 +1,11 @@
+--- bonobo-conf-0.11/bonobo-conf/Makefile.am~	Fri Aug 10 20:39:48 2001
++++ bonobo-conf-0.11/bonobo-conf/Makefile.am	Fri Sep 21 05:02:19 2001
+@@ -91,7 +91,7 @@
+ 
+ BUILT_SOURCES = $(CORBA_SOURCE)
+ 
+-CLEANFILES += $(BUILT_SOURCES)
++CLEANFILES = $(BUILT_SOURCES)
+ 
+ dist-hook:
+ 	cd $(distdir) ; rm -f $(BUILT_SOURCES)

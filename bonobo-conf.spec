@@ -1,26 +1,31 @@
 Summary:	Bonobo configuration moniker
-Summary(pl):	Narzedzie konfiguracyjne Bonobo
+Summary(pl):	NarzЙdzie konfiguracyjne Bonobo
 Name:		bonobo-conf
-Version:	0.9
-Release:	1
+Version:	0.14
+Release:	2
 License:	GPL
 Group:		X11/Libraries
 Group(de):	X11/Libraries
 Group(es):	X11/Bibliotecas
 Group(fr):	X11/Librairies
 Group(pl):	X11/Biblioteki
-Source0:	ftp://ftp.gnome.org/pub/GNOME/unstable/sources/%{name}/%{name}-%{version}.tar.bz2
-Patch0:		%{name}-ac_fixes.patch
-Patch1:		%{name}-ac_workaround.patch
+Group(pt_BR):	X11/Bibliotecas
+Group(ru):	X11/Библиотеки
+Group(uk):	X11/Б╕бл╕отеки
+Source0:	ftp://ftp.gnome.org/pub/GNOME/unstable/sources/%{name}/%{name}-%{version}.tar.gz
+Patch0:		%{name}-am15.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf-devel >= 0.11
 BuildRequires:	audiofile-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	libtool
 BuildRequires:	bonobo-devel >= 1.0.0
 BuildRequires:	esound-devel
 BuildRequires:	gettext-devel
 BuildRequires:	oaf-devel >= 0.6.2
+BuildRequires:	glib-devel >= 1.2.0
+BuildRequires:	gtk+-devel >= 1.2.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -30,13 +35,19 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Bonobo configuration moniker.
 
 %description -l pl
-Narzedzie konfiguracyjne Bonobo
+NarzЙdzie konfiguracyjne Bonobo.
 
 %package devel
-Summary:	Libraries and include files for the configuration moniker
+Summary:	Include files for the configuration moniker
+Summary(pl):	Pliki nagЁСwkowe dla bibliotek narzЙdzia konfiguracyjnego Bonobo
 Group:		X11/Development/Libraries
 Group(de):	X11/Entwicklung/Libraries
+Group(es):	X11/Desarrollo/Bibliotecas
+Group(fr):	X11/Development/Librairies
 Group(pl):	X11/Programowanie/Biblioteki
+Group(pt_BR):	X11/Desenvolvimento/Bibliotecas
+Group(ru):	X11/Разработка/Библиотеки
+Group(uk):	X11/Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description devel
@@ -45,27 +56,37 @@ files to allow you to develop programs using the Bonobo configuration
 moniker.
 
 %description devel -l pl
-Biblioteki i pliki nagЁСwkowe potrzebne do programowania.
+Biblioteki i pliki nagЁСwkowe potrzebne do programowania z u©yciem
+bibliotek narzЙdzia konfiguracyjnego Bonobo.
 
 %package static
 Summary:	Static libraries for the configuration moniker
+Summary(pl):	Statyczne biblioteki narzЙdzia konfiguracyjnego Bonobo
 Group:		X11/Development/Libraries
 Group(de):	X11/Entwicklung/Libraries
+Group(es):	X11/Desarrollo/Bibliotecas
+Group(fr):	X11/Development/Librairies
 Group(pl):	X11/Programowanie/Biblioteki
+Group(pt_BR):	X11/Desenvolvimento/Bibliotecas
+Group(ru):	X11/Разработка/Библиотеки
+Group(uk):	X11/Розробка/Б╕бл╕отеки
 Requires:	%{name}-devel = %{version}
 
 %description static
 Static libraries for the configuration moniker.
 
+%description static -l pl
+Statyczne biblioteki narzЙdzia konfiguracyjnego Bonobo.
+
 %prep
-%setup -q
+%setup  -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 rm -f missing
 gettextize --copy --force
 libtoolize --copy --force
+xml-i18n-toolize --force
 aclocal -I macros
 autoconf
 automake -a -c
