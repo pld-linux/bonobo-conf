@@ -100,8 +100,8 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/*.so
-%attr(755,root,root) %{_libdir}/*.la
-%attr(755,root,root) %{_libdir}/bonobo/monikers/*.la
+%{_libdir}/*.la
+%{_libdir}/bonobo/monikers/*.la
 %attr(755,root,root) %{_libdir}/*.sh
 %{_includedir}/bonobo-conf
 %{_datadir}/idl/*.idl
