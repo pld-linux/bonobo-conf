@@ -69,8 +69,8 @@ gettextize --copy --force
 libtoolize --copy --force
 xml-i18n-toolize --force
 aclocal -I macros
-autoconf
-automake -a -c -f
+%{__autoconf}
+%{__automake}
 %configure
 
 %{__make}
