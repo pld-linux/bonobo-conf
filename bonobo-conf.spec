@@ -70,7 +70,7 @@ libtoolize --copy --force
 xml-i18n-toolize --force
 aclocal -I macros
 autoconf
-automake -a -c
+automake -a -c -f
 %configure
 
 %{__make}
