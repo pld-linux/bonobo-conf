@@ -12,13 +12,14 @@ BuildRequires:	GConf-devel >= 0.11
 BuildRequires:	audiofile-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	libtool
 BuildRequires:	bonobo-devel >= 1.0.0
 BuildRequires:	esound-devel
 BuildRequires:	gettext-devel
-BuildRequires:	oaf-devel >= 0.6.2
 BuildRequires:	glib-devel >= 1.2.0
 BuildRequires:	gtk+-devel >= 1.2.0
+BuildRequires:	intltool
+BuildRequires:	libtool
+BuildRequires:	oaf-devel >= 0.6.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libbonobo-conf0
 
@@ -68,7 +69,7 @@ rm -f missing
 %{__gettextize}
 %{__libtoolize}
 xml-i18n-toolize --force
-aclocal -I macros
+%{__aclocal} -I macros
 %{__autoconf}
 %{__automake}
 %configure
@@ -80,8 +81,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-gzip -9nf AUTHORS ChangeLog NEWS README
-
 %find_lang %{name}
 
 %clean
@@ -92,6 +91,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
+%doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %attr(755,root,root) %{_libdir}/bonobo/monikers/*.so*
@@ -99,7 +99,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc *.gz
 %attr(755,root,root) %{_libdir}/*.so
 %attr(755,root,root) %{_libdir}/*.la
 %attr(755,root,root) %{_libdir}/bonobo/monikers/*.la
