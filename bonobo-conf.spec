@@ -66,7 +66,7 @@ Statyczne biblioteki narzêdzia konfiguracyjnego Bonobo.
 %build
 rm -f missing
 gettextize --copy --force
-libtoolize --copy --force
+%{__libtoolize}
 xml-i18n-toolize --force
 aclocal -I macros
 %{__autoconf}
