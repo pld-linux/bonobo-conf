@@ -1,5 +1,5 @@
 Summary:	Bonobo configuration moniker
-Summary(pl.UTF-8):   Narzędzie konfiguracyjne Bonobo
+Summary(pl.UTF-8):	Narzędzie konfiguracyjne Bonobo
 Name:		bonobo-conf
 Version:	0.16
 Release:	2
@@ -33,7 +33,7 @@ Narzędzie konfiguracyjne Bonobo.
 
 %package devel
 Summary:	Include files for the configuration moniker
-Summary(pl.UTF-8):   Pliki nagłówkowe dla bibliotek narzędzia konfiguracyjnego Bonobo
+Summary(pl.UTF-8):	Pliki nagłówkowe dla bibliotek narzędzia konfiguracyjnego Bonobo
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Obsoletes:	libbonobo-conf0-devel
@@ -49,7 +49,7 @@ bibliotek narzędzia konfiguracyjnego Bonobo.
 
 %package static
 Summary:	Static libraries for the configuration moniker
-Summary(pl.UTF-8):   Statyczne biblioteki narzędzia konfiguracyjnego Bonobo
+Summary(pl.UTF-8):	Statyczne biblioteki narzędzia konfiguracyjnego Bonobo
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
